@@ -1,0 +1,4 @@
+services:
+#    shuba_blog.example:
+#        class: Shuba\BlogBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
