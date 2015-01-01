@@ -69,7 +69,7 @@ assetic:
             inputs:
                 - https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js
                 - https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js
-            outputs: js/bootstrap.ie9.js        
+            outputs: js/bootstrap.ie9.js
 
 # Doctrine Configuration
 doctrine:
