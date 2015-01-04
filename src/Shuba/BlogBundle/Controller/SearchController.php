@@ -19,8 +19,8 @@ class SearchController extends Controller
         $searcher = $this->get('shuba_blog.search');
         $result = $searcher->search($request->get('search'));
         $repository = $this->getDoctrine()->getRepository('ShubaBlogBundle:Message');
-        $query = $repository->createQueryBuilder('message')
-            ->where('message.id IN (:ids)')
+        $query = $repository->createQueryBuilder('m')
+            ->where('m.id IN (:ids)')
             ->setParameter('ids', $result)
             ->getQuery();
         $messages = $query->getResult();

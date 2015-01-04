@@ -9,7 +9,16 @@
             <a class="blog-nav-item" href={{ path('shuba_blog_viewMessages') }}>
                 {% trans %}Guestbook{% endtrans %}</a>
 
+            {% block search %}
 
+                <div class="search">
+                    <form action="{{ path('shuba_blog_search') }}" metod="POST" class="form-search">
+                        <input type="text" name="search" class="input-medium search-query" />
+                        <input type="submit" class="btn" value="Search"/>
+                    </form>
+                </div>
+
+            {% endblock %}
 
         </nav>
     </div>
