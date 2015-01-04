@@ -1,3 +1,6 @@
 shuba_blog_homepage:
     path:     /
     defaults: { _controller: ShubaBlogBundle:Default:index }
+shuba_blog_viewPost:
+    pattern: /post/{slug}
+    defaults: {_controller: ShubaBlogBundle:Default:show }
