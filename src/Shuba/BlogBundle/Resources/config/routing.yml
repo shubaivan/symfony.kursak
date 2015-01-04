@@ -11,3 +11,6 @@ shuba_blog_about:
         template:     'ShubaBlogBundle:Static:proavtora.html.twig'
         maxAge:       86400
         sharedMaxAge: 86400
+shuba_blog_viewMessages:
+    pattern: /viewMessages
+    defaults: { _controller: ShubaBlogBundle:Message:viewMessages }
