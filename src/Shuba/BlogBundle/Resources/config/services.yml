@@ -6,3 +6,7 @@ services:
         class: Shuba\BlogBundle\Twig\GuestbookExtension
         tags:
             - { name: twig.extension }
+    shuba_blog.search:
+        class: Shuba\BlogBundle\Service\SearchService\Search
+        tags:
+            - { name: search }
