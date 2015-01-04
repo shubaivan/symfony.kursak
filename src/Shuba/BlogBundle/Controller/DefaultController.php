@@ -15,7 +15,18 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('No posts found');
         }
 
-        return $this->render('@ShubaBlog/Post/index.html.twig', array('posts'=>$posts));
+        return $this->render('ShubaBlogBundle:Post:index.html.twig', array('posts'=>$posts));
+    }
+
+    public function showAction($slug)
+    {
+        $post = $this->getDoctrine()->getRepository('ShubaBlogBundle:Post')
+            ->findOneBySlug($slug);
+
+        $post->setViewsNumber($post->getViewsNumber() + 1);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $this->render('ShubaBlogBundle:Post:show.html.twig', array('post'=>$post));
     }
 
 }
