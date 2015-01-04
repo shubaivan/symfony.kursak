@@ -4,3 +4,10 @@ shuba_blog_homepage:
 shuba_blog_viewPost:
     pattern: /post/{slug}
     defaults: {_controller: ShubaBlogBundle:Default:show }
+shuba_blog_about:
+    pattern: /about
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     'ShubaBlogBundle:Static:proavtora.html.twig'
+        maxAge:       86400
+        sharedMaxAge: 86400
