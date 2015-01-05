@@ -16,7 +16,7 @@ class SearchController extends Controller
 {
     public function searchAction(Request $request)
     {
-        $searcher = $this->get('shuba_search');
+        $searcher = $this->get('searcher');
         $result = $searcher->search($request->get('search'));
         $repository = $this->getDoctrine()->getRepository('ShubaBlogBundle:Message');
         $query = $repository->createQueryBuilder('m')
