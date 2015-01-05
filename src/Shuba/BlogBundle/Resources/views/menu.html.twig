@@ -8,6 +8,8 @@
                 {% trans %}About me{% endtrans %}</a>
             <a class="blog-nav-item" href={{ path('shuba_blog_viewMessages') }}>
                 {% trans %}Guestbook{% endtrans %}</a>
+            <a class="blog-nav-item" href={{ path('shuba_blog_homepage', {"_locale" : "ru"}) }}>
+                {% trans %}Ру{% endtrans %}</a>
 
             {% block search %}
 

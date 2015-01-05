@@ -1,6 +1,8 @@
 shuba_blog_homepage:
-    path:     /
-    defaults: { _controller: ShubaBlogBundle:Default:index }
+    path:     /{_locale}
+    defaults: { _controller: ShubaBlogBundle:Default:index, _locale: 'en' }
+    requirements:
+           _locale: en|ru
 shuba_blog_viewPost:
     pattern: /post/{slug}
     defaults: {_controller: ShubaBlogBundle:Default:show }
