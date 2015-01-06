@@ -46,7 +46,7 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository('ShubaBlogBundle:Post');
         $posts = $repository->findLatestPostsLimit($last_posts_limit);
 
-        return $this->render('', array('posts' => $posts));
+        return $this->render('ShubaBlogBundle:Post:lastPosts.html.twig', array('posts' => $posts));
     }
 
     public function mostViewedPostsAction($most_viewed_posts_limit = 5)
@@ -54,7 +54,7 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository('ShubaBlogBundle:Post');
         $posts = $repository->findMostViewedtPosts($most_viewed_posts_limit);
 
-        return $this->render('', array('posts' => $posts));
+        return $this->render('ShubaBlogBundle:Post:mostViewedPosts.html.twig', array('posts' => $posts));
     }
 
 }

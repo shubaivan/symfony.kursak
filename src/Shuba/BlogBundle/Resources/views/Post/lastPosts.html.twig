@@ -1,0 +1,3 @@
+{% for post in posts %}
+    <p><a href="{{ path('shuba_blog_viewPost', {'slug': post.Slug }) }}">{{ post.Title }}</a></p>
+{% endfor %}
