@@ -22,3 +22,8 @@ shuba_blog_search:
 shuba_blog_viewPostsOfCategory:
     pattern: /category/{id}
     defaults: { _controller: ShubaBlogBundle:Default:viewPostsOfCategory}
+shuba_blog_comment:
+    pattern: /{slug}/add
+    defaults: { _controller: ShubaBlogBundle:Comment:createComment}
+    requirements:
+            _method:  POST
