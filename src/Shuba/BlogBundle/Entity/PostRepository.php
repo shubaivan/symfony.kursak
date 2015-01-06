@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function findLatestPostsLimit($last_posts_limit)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM ShubaBlogBundle:Post p ORDER BY p.id DESC')
+            ->setMaxResults($last_posts_limit)
+            ->getResult();
+    }
+
+    public function findMostViewedtPosts($limit)
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM ShubaBlogBundle:Post p ORDER BY p.viewsNumber DESC')
+            ->setMaxResults($limit)
+            ->getResult();
+    }
 }
