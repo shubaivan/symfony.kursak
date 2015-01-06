@@ -8,6 +8,14 @@
             <ol class="list-unstyled">
                {{ render(controller('ShubaBlogBundle:Category:categoryTree')) }}
             </ol>
+    <div class="sidebar-module sidebar-module-inset">
+        <h4>Last posts</h4>
+        {{ render(controller('ShubaBlogBundle:Default:lastPosts')) }}
+    </div>
+    <div class="sidebar-module ">
+        <h4>Most viewed posts</h4>
+        {{ render(controller('ShubaBlogBundle:Default:mostViewedPosts')) }}
+    </div>
 
 
 </div>
