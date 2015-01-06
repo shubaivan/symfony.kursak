@@ -29,13 +29,13 @@ class CommentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $comment->setPost($this->getDoctrine()->getRepository('ShubaBlogBundle:Post')->findOneBySlugPost($slug));
+            $comment->setPost($this->getDoctrine()->getRepository('ShubaBlogBundle:Post')->findOneBySlug($slug));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
             $em->flush();
 
-            $post = $this->getDoctrine()->getRepository('ShubaBlogBundle:Post')->findBySlugPost($slug);
+            $post = $this->getDoctrine()->getRepository('ShubaBlogBundle:Post')->findBySlug($slug);
 
             $comments = array();
 

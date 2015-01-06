@@ -13,7 +13,30 @@
             <h3>
                 Коментарі:
             </h3>
+            <ul id="category_list">
+                {% for comment in post.comment|reverse %}
+                    <li>
+                        <div class="comment">
+                            <div class="info-block">
+                                <p>
+                                    Додано користувачем: <b>{{ comment.author }}</b></br>
+                                    Дата створення: <b>{{ comment.createdAt|date("d.m.Y H:i:s") }}</b>
+                                </p>
+                            </div>
 
+                            <div class="text">
+                                <p>
+                                    {{ comment.text }}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                {% else %}
+                    <li>
+                        <h3>На даний момент до цього запису не створено ні одного коментаря</h3>
+                    </li>
+                {% endfor %}
+            </ul>
 
 
             <div>
