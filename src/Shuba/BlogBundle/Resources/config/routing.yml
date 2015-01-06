@@ -19,3 +19,6 @@ shuba_blog_viewMessages:
 shuba_blog_search:
     pattern: /search
     defaults: { _controller: ShubaBlogBundle:Search:search}
+shuba_blog_viewPostsOfCategory:
+    pattern: /category/{id}
+    defaults: { _controller: ShubaBlogBundle:Default:viewPostsOfCategory}

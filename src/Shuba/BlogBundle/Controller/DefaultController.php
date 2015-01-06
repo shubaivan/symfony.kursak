@@ -29,4 +29,16 @@ class DefaultController extends Controller
         return $this->render('ShubaBlogBundle:Post:show.html.twig', array('post'=>$post));
     }
 
+    public function viewPostsOfCategoryAction($id)
+    {
+        $posts = $this->getDoctrine()->getRepository('ShubaBlogBundle:Post')
+            ->findByCategory($id);
+
+        if (!$posts) {
+            throw $this->createNotFoundException('No posts found');
+        }
+
+        return $this->render('ShubaBlogBundle:Post:index.html.twig', array('posts'=>$posts));
+    }
+
 }
