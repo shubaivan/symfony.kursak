@@ -71,6 +71,12 @@ class Post
     /** @ORM\Column(type="text")
      */
     protected $text;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", orphanRemoval=true)
+     */
+    protected $comment;
+
     /**
      * Constructor
      */
@@ -304,5 +310,38 @@ class Post
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \Shuba\BlogBundle\Entity\Comment $comment
+     * @return Post
+     */
+    public function addComment(\Shuba\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \Shuba\BlogBundle\Entity\Comment $comment
+     */
+    public function removeComment(\Shuba\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }

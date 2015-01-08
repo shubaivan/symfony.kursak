@@ -3,6 +3,7 @@
 namespace Shuba\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Shuba\BlogBundle\Form\Type\AddCommentType;
 
 class DefaultController extends Controller
 {
@@ -25,8 +26,12 @@ class DefaultController extends Controller
 
         $post->setViewsNumber($post->getViewsNumber() + 1);
         $this->getDoctrine()->getManager()->flush();
+        $form = $this->createForm(new AddCommentType());
 
-        return $this->render('ShubaBlogBundle:Post:show.html.twig', array('post'=>$post));
+
+        return $this->render('ShubaBlogBundle:Post:show.html.twig', array(
+            "form" => $form->createView(),
+            'post'=>$post));
     }
 
     public function viewPostsOfCategoryAction($id)
@@ -56,5 +61,4 @@ class DefaultController extends Controller
 
         return $this->render('ShubaBlogBundle:Post:mostViewedPosts.html.twig', array('posts' => $posts));
     }
-
 }

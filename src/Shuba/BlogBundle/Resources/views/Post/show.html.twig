@@ -9,4 +9,55 @@
             <h5> {{ post.Text }}</h5>
         </div><!--/span-->
 
+        <div>
+            <h3>
+                Коментарии:
+            </h3>
+            <ul id="category_list">
+                {% for comment in post.comment|reverse %}
+                    <li>
+                        <div class="comment">
+                            <div class="info-block">
+                                <p>
+                                    Добавленно пользователем: <b>{{ comment.author }}</b></br>
+                                    Дата создания: <b>{{ comment.createdAt|date("d.m.Y H:i:s") }}</b>
+                                </p>
+                            </div>
+
+                            <div class="text">
+                                <p>
+                                    {{ comment.text }}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                {% else %}
+                    <li>
+                        <h3>В данный момент нет коментариев</h3>
+                    </li>
+                {% endfor %}
+            </ul>
+
+
+            <div>
+                <h3>Створення нового коментаря:</h3>
+                <form id="comment_add" role="form" action="{{ path("shuba_blog_comment", {"slug" : post.slug}) }}" method="POST">
+                    <div>
+                        {{ form_row(form.author) }}
+                    </div>
+
+                    <div class="text">
+                        {{ form_row(form.text) }}
+                        <div id="clear"></div>
+                    </div>
+
+                    {{ form_rest(form) }}
+
+                    <div>
+                        <input type="submit" value="Добавить коментарий">
+                    </div>
+                </form>
+            </div>
+        </div>
+
     {% endblock %}
