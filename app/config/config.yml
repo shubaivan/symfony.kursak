@@ -63,7 +63,7 @@ assetic:
         js_bootstrap:
             inputs:
                 - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
-                - %kernel.root_dir%/../vendor/twbs/bootstrap/assets/js/docs.min.js
+#                - %kernel.root_dir%/../vendor/twbs/bootstrap/assets/js/docs.min.js
             output: js/bootstrap.js
         js_bootstrap_ie9:
             inputs:
