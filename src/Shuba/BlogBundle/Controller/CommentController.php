@@ -49,5 +49,6 @@ class CommentController extends Controller
         }
 
         return new JsonResponse([], 500);
+
     }
 }

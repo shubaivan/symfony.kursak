@@ -1,3 +1,6 @@
+/**
+ * Created by ivan on 08.01.15.
+ */
 /*!
  * jQuery JavaScript Library v1.11.1
  * http://jquery.com/
