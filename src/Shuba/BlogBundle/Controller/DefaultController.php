@@ -61,4 +61,13 @@ class DefaultController extends Controller
 
         return $this->render('ShubaBlogBundle:Post:mostViewedPosts.html.twig', array('posts' => $posts));
     }
+    public function tagAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $tags = $em->getRepository('ShubaBlogBundle:Tag')->findAll();
+
+
+        return $this->render('ShubaBlogBundle:Tag:index.html.twig', array('tags'=>$tags));
+    }
 }

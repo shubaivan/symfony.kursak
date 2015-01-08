@@ -16,6 +16,19 @@
         <h4>Most viewed posts</h4>
         {{ render(controller('ShubaBlogBundle:Default:mostViewedPosts')) }}
     </div>
+    <div class="sidebar-module ">
+        <h4>Список тегов</h4>
+        {{ render(controller('ShubaBlogBundle:Default:tag')) }}
+    </div>
 
-
+    {#<div id="sidebar-module">#}
+        {#<span>Список тегов</span>#}
+    {#</div>#}
+    {#<ul>#}
+        {#{% for tags in tags %}#}
+            {#<li>#}
+                {#{{tags }}#}
+            {#</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
 </div>
