@@ -11,7 +11,7 @@
 
         <div>
             <h3>
-                Коментарі:
+                Коментарии:
             </h3>
             <ul id="category_list">
                 {% for comment in post.comment|reverse %}
@@ -19,8 +19,8 @@
                         <div class="comment">
                             <div class="info-block">
                                 <p>
-                                    Додано користувачем: <b>{{ comment.author }}</b></br>
-                                    Дата створення: <b>{{ comment.createdAt|date("d.m.Y H:i:s") }}</b>
+                                    Добавленно пользователем: <b>{{ comment.author }}</b></br>
+                                    Дата создания: <b>{{ comment.createdAt|date("d.m.Y H:i:s") }}</b>
                                 </p>
                             </div>
 
@@ -33,7 +33,7 @@
                     </li>
                 {% else %}
                     <li>
-                        <h3>На даний момент до цього запису не створено ні одного коментаря</h3>
+                        <h3>В данный момент нет коментариев</h3>
                     </li>
                 {% endfor %}
             </ul>
@@ -54,7 +54,7 @@
                     {{ form_rest(form) }}
 
                     <div>
-                        <input type="submit" value="Додати коментар">
+                        <input type="submit" value="Добавить коментарий">
                     </div>
                 </form>
             </div>
