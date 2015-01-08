@@ -1,3 +1,29 @@
 shuba_blog_homepage:
-    path:     /
-    defaults: { _controller: ShubaBlogBundle:Default:index }
+    path:     /{_locale}
+    defaults: { _controller: ShubaBlogBundle:Default:index, _locale: 'en' }
+    requirements:
+           _locale: en|ru
+shuba_blog_viewPost:
+    pattern: /post/{slug}
+    defaults: {_controller: ShubaBlogBundle:Default:show }
+shuba_blog_about:
+    pattern: /about
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     'ShubaBlogBundle:Static:proavtora.html.twig'
+        maxAge:       86400
+        sharedMaxAge: 86400
+shuba_blog_viewMessages:
+    pattern: /viewMessages
+    defaults: { _controller: ShubaBlogBundle:Message:viewMessages }
+shuba_blog_search:
+    pattern: /search
+    defaults: { _controller: ShubaBlogBundle:Search:search}
+shuba_blog_viewPostsOfCategory:
+    pattern: /category/{id}
+    defaults: { _controller: ShubaBlogBundle:Default:viewPostsOfCategory}
+shuba_blog_comment:
+    pattern: /{slug}/add
+    defaults: { _controller: ShubaBlogBundle:Comment:createComment}
+    requirements:
+            _method:  POST
