@@ -1,11 +1,11 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: services.yml }
+#    - { resource: services.yml }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: en  }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -43,6 +43,34 @@ assetic:
         #yui_css:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
+    assets:
+        bootstrap_min_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/css/bootstrap.min.css
+            filters:
+                - cssrewrite
+            output: css/bootstrap.min.css
+        blog_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/docs/examples/blog/blog.css
+            filters:
+                - cssrewrite
+            output: css/blog.css
+        jquery:
+            inputs:
+                - %kernel.root_dir%/../vendor/components/jquery/jquery.min.js
+            output: js/jquery.js
+        js_bootstrap:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.min.js
+#                - %kernel.root_dir%/../vendor/twbs/bootstrap/assets/js/docs.min.js
+            output: js/bootstrap.js
+        js_bootstrap_ie9:
+            inputs:
+                - https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js
+                - https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js
+            outputs: js/bootstrap.ie9.js
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -61,8 +89,23 @@ doctrine:
         #     path:     "%database_path%"
 
     orm:
+        entity_managers:
+            default:
+                mappings:
+                    gedmo_loggable:
+                        type: annotation
+                        prefix: Gedmo\Loggable\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
+                        alias: GedmoLoggable # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                    gedmo_tree:
+                        type: annotation
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                        alias: GedmoTree # this one is optional and will default to the name set for the mapping
+                        is_bundle: false
+                auto_mapping: true
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -71,3 +114,11 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
+            sluggable: true
+            loggable: true
+            tree:    true
